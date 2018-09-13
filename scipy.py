@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+    # -*- coding: utf-8 -*-
 """
 Created on Wed Sep  5 20:51:44 2018
 
@@ -25,9 +25,9 @@ def periodic_func(times, avg, ampl, time_offset):
             + ampl * np.cos((times + time_offset) * 2 * np.pi / times.max()))
 
 res_max, cov_max = optimize.curve_fit(periodic_func, months,
-                                      Max)
+                                      Max,[20, 10, 0])
 res_min, cov_min = optimize.curve_fit(periodic_func, months,
-                                      Min)
+                                      Min,[-40, 20, 0])
 
 plt.plot(months,Max,'ro')
 plt.plot(days, periodic_func(days, *res_max), 'r-')
